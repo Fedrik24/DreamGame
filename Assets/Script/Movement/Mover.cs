@@ -1,14 +1,13 @@
-using Dreams.Combat;
+using Dreams.Core;
+using Dreams.Core.Scheduler;
 using UnityEngine;
 using UnityEngine.AI;
 
 
 namespace Dreams.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
-        [SerializeField] private Fighter fighter; // DEBT need to fix this quicly, Cyclic Namespace...
-        
         private NavMeshAgent playerAgent;
         private Animator characterAnimator;
 
@@ -27,7 +26,7 @@ namespace Dreams.Movement
 
         public void StartMoveAction(Vector3 destination)
         {
-            fighter.CancelAttack(); 
+            GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
         }
         
@@ -37,7 +36,7 @@ namespace Dreams.Movement
             playerAgent.isStopped = false;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             playerAgent.isStopped = true;
         }
@@ -51,5 +50,7 @@ namespace Dreams.Movement
             float characterSpeed = localVelocity.z;
             characterAnimator.SetFloat("forwardSpeed", characterSpeed);
         }
+
+
     }
 }
