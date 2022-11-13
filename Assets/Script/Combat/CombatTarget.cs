@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dreams.Core.Health;
+using UnityEngine;
 
 namespace Dreams.Combat
 {

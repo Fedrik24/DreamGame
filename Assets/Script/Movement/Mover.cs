@@ -1,4 +1,5 @@
 using Dreams.Core;
+using Dreams.Core.Health;
 using Dreams.Core.Scheduler;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,15 +11,18 @@ namespace Dreams.Movement
     {
         private NavMeshAgent playerAgent;
         private Animator characterAnimator;
+        private Health health;
 
         void Start()
         {
             playerAgent = GetComponent<NavMeshAgent>();
             characterAnimator = GetComponent<Animator>();
+            health = GetComponent<Health>();
         }
 
         void Update()
         {
+            playerAgent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 

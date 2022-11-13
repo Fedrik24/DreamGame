@@ -1,18 +1,22 @@
 ﻿using System;
+using Dreams.Core.Scheduler;
 using UnityEngine;
 
-namespace Dreams.Combat
+namespace Dreams.Core.Health
 {
     public class Health : MonoBehaviour
     {
         [SerializeField] private float healthPoints = 100f;
-        [SerializeField] private Animator animator; // Bisa di jadiin 1 Script untuk semua animator
+        [SerializeField] private Animator animator;
+
+        private ActionScheduler actionScheduler;
 
         private bool isDead = false;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         public void TakeDamage(float damage)
@@ -34,6 +38,7 @@ namespace Dreams.Combat
             if(isDead) return;
             animator.SetTrigger("die");
             isDead = true;
+            actionScheduler.CancelCurrentAction();
         }
     }
 }

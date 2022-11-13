@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2409825719121347780, guid: 70640ff3bdd0daa408978cb80147788e, type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4658610208688893529, guid: 70640ff3bdd0daa408978cb80147788e, type: 3}
       propertyPath: m_Name
       value: CharacterEnemy
@@ -80,6 +84,71 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &85912236027165805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307020760282271312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abf932598fd4c78a8a2bd77e8d35008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1470478283341476572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307020760282271312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7cfa40f32e842469e38f0e4927e3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5959910544607419584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307020760282271312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fabd0ae88754949b366b903d30b7ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 5
+  health: {fileID: 1801974081600472895}
+--- !u!114 &7256099111703080378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307020760282271312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0bfb31928a4ce495f25a7418de31b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {fileID: 1470478283341476572}
+  weaponRange: 2
+  timeThreshold: 1
+  weaponDamage: 10
+--- !u!114 &1801974081600472895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6765973912881899318, guid: 70640ff3bdd0daa408978cb80147788e, type: 3}
+  m_PrefabInstance: {fileID: 4964220835266256905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307020760282271312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c055e1a8ff5b426c9c1be5292f3f56b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4212652661727419230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9120402544894327639, guid: 70640ff3bdd0daa408978cb80147788e, type: 3}

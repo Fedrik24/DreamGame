@@ -15,6 +15,11 @@ namespace Dreams.Core.Scheduler
                 currentAction.Cancel();
             }
             currentAction = action;
-        }        
+        }
+
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
+        }
     }
 }
