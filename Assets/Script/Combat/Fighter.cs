@@ -1,4 +1,5 @@
 ﻿using Dreams.Core;
+using Dreams.Core.Health;
 using Dreams.Core.Scheduler;
 using Dreams.Movement;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Dreams.Combat
         private Animator animation;
         private Health target;
 
-        private float timeSinceLastAttack = 0;
+        private float timeSinceLastAttack = Mathf.Infinity;
 
         private void Start()
         {
@@ -61,13 +62,13 @@ namespace Dreams.Combat
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
         }
         
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null) return false;
             Health targetToTest = combatTarget.GetComponent<Health>();

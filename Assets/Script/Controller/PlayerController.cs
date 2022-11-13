@@ -1,5 +1,6 @@
 ﻿using System;
 using Dreams.Combat;
+using Dreams.Core.Health;
 using UnityEngine;
 using Dreams.Movement;
 
@@ -8,9 +9,16 @@ namespace Dreams.Controller
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Mover player;
+        [SerializeField] private Health health;
+
+        private void Start()
+        {
+            health = GetComponent<Health>();
+        }
 
         private void Update()
         {
+            if (health.IsDead()) return;
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
             Debug.Log($"Nothing to do");
@@ -22,14 +30,16 @@ namespace Dreams.Controller
             foreach (RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (!GetComponent<Fighter>().CanAttack(target))
+                if(target == null) continue;
+
+                if (!GetComponent<Fighter>().CanAttack(target.gameObject))
                 {
                     continue;
                 }
                 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetKey(KeyCode.Mouse0))
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    GetComponent<Fighter>().Attack(target.gameObject);
                 }
                 return true;
             }
