@@ -9,10 +9,10 @@ namespace Dreams.Controller
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private Health health;
-        [SerializeField] private float suspiscionTime = 3f;
         [SerializeField] private PatrolPath patrolPath;
+        [SerializeField] private float chaseDistance = 5f;
+        [SerializeField] private float suspiscionTime = 3f;
         [SerializeField] private float waypointDwellTime = 3f;
         
         private Fighter fighter;
