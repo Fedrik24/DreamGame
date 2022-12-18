@@ -39,11 +39,13 @@ namespace Dreams.SceneManagement
             }
             
             DontDestroyOnLoad(gameObject);
+            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
+            wrapper.Save();
             yield return SceneManager.LoadSceneAsync(sceneIndex);;
+            wrapper.Load();
             Portal otherPortal = GetOtherPortal();
+            wrapper.Save();
             UpdatePlayer(otherPortal);
-
-
             Destroy(gameObject);
         }
 
@@ -62,8 +64,10 @@ namespace Dreams.SceneManagement
         private void UpdatePlayer(Portal portal)
         {
             GameObject player = GameObject.FindWithTag("Player");
+            player.GetComponent<NavMeshAgent>().enabled = false;
             player.GetComponent<NavMeshAgent>().Warp(portal.spawnPoint.position);
             player.transform.rotation = portal.spawnPoint.rotation;
+            player.GetComponent<NavMeshAgent>().enabled = true;
         }
         
     }
