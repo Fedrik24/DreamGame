@@ -1,12 +1,13 @@
 ﻿using System;
 using Dreams.Core.Scheduler;
+using Dreams.Saving;
 using UnityEngine;
 
 namespace Dreams.Core.Health
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] private float healthPoints = 100f;
+        [SerializeField] private float healthPoints;
         [SerializeField] private Animator animator;
 
         private ActionScheduler actionScheduler;
@@ -39,6 +40,20 @@ namespace Dreams.Core.Health
             animator.SetTrigger("die");
             isDead = true;
             actionScheduler.CancelCurrentAction();
+        }
+
+        public object CaptureState()
+        {
+            return healthPoints;
+        }
+
+        public void RestoreState(object state)
+        {
+            healthPoints = (float) state;
+            if (healthPoints == 0)
+            {
+                Die();
+            }
         }
     }
 }

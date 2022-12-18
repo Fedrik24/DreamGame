@@ -1,13 +1,15 @@
+using System.Collections.Generic;
 using Dreams.Core;
 using Dreams.Core.Health;
 using Dreams.Core.Scheduler;
+using Dreams.Saving;
 using UnityEngine;
 using UnityEngine.AI;
 
 
 namespace Dreams.Movement
 {
-    public class Mover : MonoBehaviour, IAction
+    public class Mover : MonoBehaviour, IAction, ISaveable
     {
         private NavMeshAgent playerAgent;
         private Animator characterAnimator;
@@ -56,5 +58,29 @@ namespace Dreams.Movement
         }
 
 
+        public object CaptureState()
+        {
+            MoverSaveData data = new MoverSaveData();
+            data.position = new SerializableVector3(transform.position);
+            data.rotation = new SerializableVector3(transform.eulerAngles);
+            return data;
+        }
+
+        public void RestoreState(object state)
+        {
+            MoverSaveData data = (MoverSaveData)state;
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = data.position.ToVector();
+            transform.eulerAngles = data.rotation.ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;
+        }
+
+        [System.Serializable]
+        struct MoverSaveData
+        {
+            public SerializableVector3 position;
+            public SerializableVector3 rotation;
+        }
+        
     }
 }
