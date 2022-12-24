@@ -32,7 +32,6 @@ namespace Dreams.Saving
 
         public void Load(string saveFile)
         {
-            Debug.Log($"Loading SAVEFILE :{saveFile}");
             RestoreState(LoadFile(saveFile));
         }
 
