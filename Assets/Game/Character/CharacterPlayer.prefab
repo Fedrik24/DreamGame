@@ -150,6 +150,9 @@ MonoBehaviour:
   weaponRange: 2
   timeThreshold: 1
   weaponDamage: 10
+  weaponPrefabs: {fileID: 563002909073493425, guid: 58bccb5b90be6364f903ddc03b698065, type: 3}
+  handTransform: {fileID: 7120628273658515502}
+  weaponOverrides: {fileID: 22100000, guid: c5e71dca12e755749a77ff24cb24d9d3, type: 2}
 --- !u!114 &8935759281074857268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,3 +231,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 01b2546c969fe814794af634cb4534f4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &7120628273658515502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 7120628273658452394}
+  m_PrefabAsset: {fileID: 0}

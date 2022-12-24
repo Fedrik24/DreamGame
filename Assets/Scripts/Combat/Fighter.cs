@@ -12,6 +12,9 @@ namespace Dreams.Combat
         [SerializeField] private float weaponRange = 2f; // Can use ScriptableObject in the future...
         [SerializeField] private float timeThreshold = 1f;
         [SerializeField] private float weaponDamage = 10f;
+        [SerializeField] private GameObject weaponPrefabs = null;
+        [SerializeField] private Transform handTransform;
+        [SerializeField] private AnimatorOverrideController weaponOverrides = null;
 
         private Animator animation;
         private Health target;
@@ -21,8 +24,16 @@ namespace Dreams.Combat
         private void Start()
         {
             animation = GetComponent<Animator>();
+            SpawnWeapon();
         }
-        
+
+        private void SpawnWeapon()
+        {
+            Instantiate(weaponPrefabs, handTransform);
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = weaponOverrides;
+        }
+
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
